@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: sample-spring-k8s
+  annotations:
+    argocd.argoproj.io/sync-options: CreateNamespace=true
 spec:
   goTemplate: true
   generators:
@@ -18,12 +20,12 @@ spec:
       name: sample-spring-k8s-{{ .env }}
     spec:
       destination:
-        namespace: {{ .env }}
+        namespace: '{{ .env }}'
         server: 'https://kubernetes.default.svc'
       project: default
       source:
-        path: chapter-9/cd/chart
-        repoURL: 'https://github.com/piomin/java-with-kubernetes-in-action.git'
+        path: basic/chart
+        repoURL: 'https://github.com/piomin/argocd-showcase.git'
         targetRevision: HEAD
         helm:
           valueFiles:

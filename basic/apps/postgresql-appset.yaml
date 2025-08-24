@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: postgresql
+  annotations:
+    argocd.argoproj.io/sync-options: CreateNamespace=true
 spec:
   goTemplate: true
   generators:
@@ -15,7 +17,7 @@ spec:
       name: postgresql-{{ .env }}
     spec:
       destination:
-        namespace: {{ .env }}
+        namespace: '{{ .env }}'
         server: 'https://kubernetes.default.svc'
       project: default
       source:
