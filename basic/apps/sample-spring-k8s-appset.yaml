@@ -2,8 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: sample-spring-k8s
-  annotations:
-    argocd.argoproj.io/sync-options: CreateNamespace=true
 spec:
   goTemplate: true
   generators:
