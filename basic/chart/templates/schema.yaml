@@ -8,7 +8,7 @@ metadata:
 spec:
   credentials:
     scheme: postgres
-    host: postgresql-{{ .Values.env }}
+    host: postgresql-{{ .Values.env }}.{{ .Values.env }}
     user: postgres
     passwordFrom:
       secretKeyRef:
