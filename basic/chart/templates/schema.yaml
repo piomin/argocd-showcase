@@ -13,7 +13,7 @@ spec:
     passwordFrom:
       secretKeyRef:
         key: postgres-password
-        name: postgresql-{{ .Values.env }}
+        name: test2
     database: postgres
     port: 5432
     parameters:
